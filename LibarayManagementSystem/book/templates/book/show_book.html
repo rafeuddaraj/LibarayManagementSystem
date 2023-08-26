@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}
+  Browse Book
+{% endblock title %}
+
+{% block main %}
+{% if query %}
+<div class="container mx-auto p-10">
+  <h2 class="text-center">Search Results for "{{ query }}"</h2>
+</div>
+{%endif%}
+
+
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3">
+  <!--Card 1-->
+  {% if query %}
+  {% for book in results %}
+  <div class="rounded overflow-hidden shadow-lg h-4/6">
+      <div class="max-w-full max-h-full h-3/5">
+          {% if book.book_image %}
+          <img class="w-full max-h-full " src="{{book.book_image.url}}" alt="{{book.title}}">
+          {%else%}
+          <img class="w-full max-h-full" src="{% static 'no_img/no-image.svg' %}" alt="{{book.title}}">
+      {% endif %}
+      </div>
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2"> {{book.first_name}} {{ book.last_name}} </div>
+        <p class="text-gray-700 text-base">
+          {{book.title}}
+        </p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> #{{book.author}} </span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{book.category}}</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{book.availability_status}}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+    {%else%}
+    {% for book in data %}
+  <div class="rounded overflow-hidden shadow-lg h-4/6">
+      <div class="max-w-full max-h-full h-3/5">
+          {% if book.book_image %}
+          <img class="w-full max-h-full " src="{{book.book_image.url}}" alt="{{book.title}}">
+          {%else%}
+          <img class="w-full max-h-full" src="{% static 'no_img/no-image.svg' %}" alt="{{book.title}}">
+      {% endif %}
+      </div>
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2"> {{book.first_name}} {{ book.last_name}} </div>
+        <p class="text-gray-700 text-base">
+          {{book.title}}
+        </p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> #{{book.author}} </span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{book.category}}</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{book.availability_status}}</span>
+      </div>
+    </div>
+  {% endfor %}
+  {% endif %}
+</div>
+</div>
+
+{% endblock main %}

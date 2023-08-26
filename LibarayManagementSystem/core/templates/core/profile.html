@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% block title %}
+  Profile
+{% endblock title %}
+
+{% block main %}
+
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-3xl font-semibold mb-4">Welcome to Your Profile</h1>
+    <h2 class="text-xl text-gray-600 mb-6">Hello, {{user.first_name}} {{user.last_name}}</h2>
+    
+    <div class="grid grid-cols-2 gap-4">
+        <a href="{% url 'show-book' %}" class="bg-blue-200 hover:bg-blue-300 p-4 text-center rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Books</h3>
+            <p class="text-gray-600">Browse and explore books</p>
+        </a>
+        <a href="#" class="bg-blue-200 hover:bg-blue-300 p-4 text-center rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Add Book</h3>
+            <p class="text-gray-600">Contribute and share your book</p>
+        </a>
+        <a href="#" class="bg-blue-200 hover:bg-blue-300 p-4 text-center rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">My Books</h3>
+            <p class="text-gray-600">View and manage your books</p>
+        </a>
+        <a href="#" class="bg-blue-200 hover:bg-blue-300 p-4 text-center rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Wishlist</h3>
+            <p class="text-gray-600">Track books you wish to read</p>
+        </a>
+    </div>
+</div>
+
+{% endblock main %}
